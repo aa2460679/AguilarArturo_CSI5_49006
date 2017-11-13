@@ -1,5 +1,3 @@
-
-
 /* 
  * File:   main.cpp
  * Author: Art
@@ -22,7 +20,7 @@ using namespace std;    //Standard Name-space under which System Libraries resid
 
 int main(int argc, char** argv) {
     //Declare Variables
-    float rt, csc, frml, hwt, mm, ms, mc, cc, grms;
+    float rglrT, overT, dblTm;
     
     
     //share cost in $ 's commission paid in $'s
