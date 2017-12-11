@@ -19,7 +19,8 @@ using namespace std;    //Standard Name-space under which System Libraries resid
 //Global Constants - Not variables only Math/Science/Conversion constants
 
 //Function Prototypes
-
+void calmrkp(float tst1, float ttlRtl);
+void calRtl( float ttlRtl );
 //Execution Begins Here!
 //int main(int argc, char** argv) 
     //Declare Variables
@@ -32,17 +33,20 @@ using namespace std;    //Standard Name-space under which System Libraries resid
     
     //Display/Output all pertinent variables
     
-    void calmrkp(float tst1)
+    void calmrkp(float tst1, float ttlRtl, float prc)
     {
         //float mrkp;
+        //float prc;
+        cout<<"wholesale price $"<<prc<<endl;
         cout<<"the markup percentage is "<<tst1<<"%"<<endl;
+        calRtl( ttlRtl );
     }
     
-    calRtl()
+    void calRtl( float ttlRtl)
     {
-        float ttlRtl;
         cout<<"your retail price is $"<<ttlRtl<<endl;
     }
+    
     int main ()
     {
     float prc;
@@ -51,17 +55,21 @@ using namespace std;    //Standard Name-space under which System Libraries resid
     float prcntg;
     float amtMrkp;
     float ttlRtl;
-    amtMrkp = prc*prcntg;
-    ttlRtl = amtMrkp + prc;
+    
     cout<<"this program will calculate the mark up of a n item"<<endl;
     cout<< "what is the price of the item?"<<endl;
     cin>>prc;
+    
     cout<<"what percentage do you want to mark up?"<<endl;
     cin>>mrkp;
     prcntg = mrkp/100;
+    amtMrkp = prc*prcntg;
+    ttlRtl = amtMrkp + prc;
+    calmrkp(mrkp, ttlRtl, prc);
     
-    cout<<"wholesale price $"<<prc<<endl;
-    calmrkp(mrkp = tst1);
+    
+    
+
         
     //Exit the program
     return 0;
