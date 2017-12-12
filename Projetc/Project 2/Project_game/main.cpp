@@ -1,7 +1,7 @@
 /* 
  * File:   main.cpp
- * Author: Art
- * Created on November 4, 2017, 1:35 PM
+ * Author: Art Aguilar
+ * Created on December 11, 2017, 1:35 PM
  * Purpose: Numbers games
  */
 
@@ -26,10 +26,10 @@ const int ONES   =   1;
 //Function Prototypes
 void outRome(int guess);
 //void stfnctn(int tsts);
-void bubSort(int[], int);                //array to show the program's numbers
-void swap(int &, int &);                //swap to show the program's numbers
-void usrGuss(int[], int * [], int);     //array to show the user's numbers
-void Usrswap(int &, int &);             //swap to show user's numbers
+void bubSort(int[], int);                 //array to show the program's numbers
+void swap(int &, int &);                  //swap to show the program's numbers
+//void usrGuss(int[], int * [], int);     //array to show the user's numbers
+//void Usrswap(int &, int &);             //swap to show user's numbers
 
 //Execution Begins Here!
 int main(int argc, char** argv)
@@ -45,7 +45,6 @@ int main(int argc, char** argv)
     const int GUESSES = 9;
     int usrGuss [GUESSES]={};
     
-    //unsigned short nmbr;
     //Initialize Variables
     
     //Input Data/Variables
@@ -71,7 +70,6 @@ int main(int argc, char** argv)
     // cout << (int)NTens << ":" << Xnmbr << endl;
     NOnes=Xnmbr;
     //cout << (int)NOnes << ":" << Xnmbr << endl;
-    
     //nmbr=Xnmbr;
     //Display/Output all pertinent variables
     cout<<"Welcome to the Numbers Game"<<endl;
@@ -82,8 +80,6 @@ int main(int argc, char** argv)
     cout<<endl;
     cout<<"please enter your secret Number Between one and one hundred"<<endl;
     cin>>usrNmbr;
-
-    
     
     {
         if (usrNmbr <= 100 && usrNmbr > 0)
@@ -103,7 +99,6 @@ int main(int argc, char** argv)
         cout<<"Please enter your guess of the program's number"<<endl;
         cin>>guess;
         outRome( guess );
-        
         
         count++;
         ++tries;
@@ -130,18 +125,19 @@ int main(int argc, char** argv)
             cout<<"that was a nice try, you still got "<<9 - count<<" guesses"<<endl;
                             }
         if (guess == Xnmbr){
-            cout<<"congratulations, you guess the program's number "<<tries<<" tries"<<endl;
+            cout<<"congratulations, you guess the program's number in "<<tries<<" tries"<<endl;
         }
         if (count == 10){
             cout<<"you are out of guesses, maybe next time"<<endl;
         }
         
-        int usrg = usrGuss [GUESSES];
+        int usrg = usrGuss[count];
         int pcg = pcGuess[count];
         cout<<endl;
         cout<<"your number is "<<usrNmbr<<endl;
         cout<<"Computer guess is "<< pcg;
         cout<<endl;
+        
  /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 //this is the cout if the program wins
         
@@ -152,20 +148,24 @@ int main(int argc, char** argv)
         cin>>c_again;
         if (c_again !='y' && c_again!='Y') again = false;
         else again = true;
+        bubSort(usrGuss, GUESSES);
         bubSort(pcGuess, GUESSES);
         for (int cpu =0; cpu < GUESSES; cpu++)
     {
-        cout<< pcGuess[cpu]<<" were the number the program used"<<endl;
+        cout<< pcGuess[cpu]<<" was one of the number the program used"<<endl;
     }
-        cout<<"thank you for playing come back soon"<<endl;
-            //continue;
+//        for (int usrg =0; usrg < GUESSES; usrg++)
+//    {
+//        cout<< usrGuss[usrg]<<" was your guess #"<<usrg+1<<endl;
+//    }
+//        cout<<"thank you for playing come back soon"<<endl;
         }    
     }   
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     
     outRome(guess);  
-    
-  /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+     
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     //this is the cout if the user wins
     //after the game
         cout<<"Do you want to go again? (Y/N): ";
@@ -177,12 +177,12 @@ int main(int argc, char** argv)
         bubSort(pcGuess, GUESSES);
         for (int cpu =0; cpu < GUESSES; cpu++)
     {
-        cout<< pcGuess[cpu]<<" were the number the program used"<<endl;
+        cout<< pcGuess[cpu]<<" was one of the number the program used"<<endl;
     }
-        for (int cpu =0; cpu < GUESSES; cpu++)
-    {
-        cout<< usrGuss[GUESSES]<<" was your guess #"<<cpu+1<<endl;
-    }
+//        for (int usrg =0; usrg < GUESSES; usrg++)
+//    {
+//        cout<< usrGuss[usrg]<<" was your guess #"<<usrg+1<<endl;
+//    }
         cout<<"thank you for playing come back soon"<<endl;
  /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/        
     }while(again);

