@@ -25,9 +25,11 @@ const int ONES   =   1;
 
 //Function Prototypes
 void outRome(int guess);
-void stfnctn(int tsts);
-void prntRpt(int[], int * [], int);
-void swap(int &, int &);
+//void stfnctn(int tsts);
+void bubSort(int[], int);                //array to show the program's numbers
+void swap(int &, int &);                //swap to show the program's numbers
+void usrGuss(int[], int * [], int);     //array to show the user's numbers
+void Usrswap(int &, int &);             //swap to show user's numbers
 
 //Execution Begins Here!
 int main(int argc, char** argv)
@@ -40,6 +42,9 @@ int main(int argc, char** argv)
     unsigned char NThsnds, NHndrds, NTens, NOnes;
     int pcGuess[10];
     int usrNmbr;
+    const int GUESSES = 9;
+    int usrGuss [GUESSES]={};
+    
     //unsigned short nmbr;
     //Initialize Variables
     
@@ -77,15 +82,9 @@ int main(int argc, char** argv)
     cout<<endl;
     cout<<"please enter your secret Number Between one and one hundred"<<endl;
     cin>>usrNmbr;
-    //while (!crctNbr)
-    const int PGRMRPT = 10;
-    int pgrmRpt [PGRMRPT]={};
-    int * prntRpt[PGRMRPT];
-    for(int c = 0; c < PGRMRPT; c++)
-    {
-        prntRpt[c] = & pgrmRpt[c];
-    }
-    int pcGuess[PGRMRPT];
+
+    
+    
     {
         if (usrNmbr <= 100 && usrNmbr > 0)
             scrtNbr = true;
@@ -116,6 +115,7 @@ int main(int argc, char** argv)
             cout<<"Your number is not between 1 and 1000"<<endl;
             cout<<"Pick a positive number between 1 and 1000"<<endl;
             cin>>guess;
+            
             crctNbr = false;
             }
             
@@ -136,12 +136,14 @@ int main(int argc, char** argv)
             cout<<"you are out of guesses, maybe next time"<<endl;
         }
         
-        
+        int usrg = usrGuss [GUESSES];
         int pcg = pcGuess[count];
         cout<<endl;
         cout<<"your number is "<<usrNmbr<<endl;
         cout<<"Computer guess is "<< pcg;
         cout<<endl;
+ /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+//this is the cout if the program wins
         
         if ( pcg == usrNmbr ) {
             cout<<"PC WINS"<<endl;
@@ -150,34 +152,46 @@ int main(int argc, char** argv)
         cin>>c_again;
         if (c_again !='y' && c_again!='Y') again = false;
         else again = true;
-        for (int cpu =0; cpu < PGRMRPT; cpu++)
+        bubSort(pcGuess, GUESSES);
+        for (int cpu =0; cpu < GUESSES; cpu++)
     {
-        cout<< *prntRpt[cpu]<<" were the number the program used"<<endl;
+        cout<< pcGuess[cpu]<<" were the number the program used"<<endl;
     }
         cout<<"thank you for playing come back soon"<<endl;
             //continue;
         }    
     }   
-     
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+    
     outRome(guess);  
-        
+    
+  /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+    //this is the cout if the user wins
     //after the game
         cout<<"Do you want to go again? (Y/N): ";
         char c_again;
         cin>>c_again;
         if (c_again !='y' && c_again!='Y') again = false;
         else again = true;
-        for (int cpu =0; cpu < PGRMRPT; cpu++)
+        bubSort(usrGuss, GUESSES);
+        bubSort(pcGuess, GUESSES);
+        for (int cpu =0; cpu < GUESSES; cpu++)
     {
-        cout<< *prntRpt[cpu]<<" were the number the program used"<<endl;
+        cout<< pcGuess[cpu]<<" were the number the program used"<<endl;
+    }
+        for (int cpu =0; cpu < GUESSES; cpu++)
+    {
+        cout<< usrGuss[GUESSES]<<" was your guess #"<<cpu+1<<endl;
     }
         cout<<"thank you for playing come back soon"<<endl;
-        
+ /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/        
     }while(again);
     //Exit the program
     return 0;
 }
 
+/*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+//function to cout Roman numbers
 
 void outRome(int guess){
     int temp = guess;                       // convert to Roman;
@@ -224,24 +238,19 @@ void outRome(int guess){
         }
         cout<<endl;
 }
+ /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 
-void prntRpt(int array[], int * pgrmRpt[], int size) 
-{
-int mxLmnt;
-int index;
-
-for (mxLmnt = size - 1; mxLmnt > 0; mxLmnt--)
-{
-    for (index = 0; index < mxLmnt; index++)
-    {
-        if (array[index] > array[index] + 1)
-        {
-            swap(array[index], array[index + 1]);
-            swap(pgrmRpt[index], pgrmRpt[index + 1]);
-                    
+void bubSort(int a[],int n){
+    bool swp;
+    do{
+        swp=false;
+        for(int j=0;j<n-1;j++){
+            if(a[j]>a[j+1]){
+                swap(a[j],a[j+1]);
+                swp=true;
+            }
         }
-    }
- }
+    }while(swp);
 }
 
 void swap(int&a, int &b)
